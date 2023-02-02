@@ -73,7 +73,7 @@ namespace Graphic
         Ref<const Rectf> Source,
         Real32 Depth,
         Real32 Angle,
-        UInt32 Color,
+        UInt32 Color[4],
         Ref<const SPtr<Pipeline>> Pipeline,
         Ref<const SPtr<Material>> Material)
     {
@@ -88,7 +88,11 @@ namespace Graphic
         Drawable.Source      = Source;
         Drawable.Depth       = Depth;
         Drawable.Angle       = Angle;
-        Drawable.Color       = Color;
+        //Drawable.Color       = Color;
+		Drawable.Color[1]       = Color[1];
+		Drawable.Color[2]       = Color[2];
+		Drawable.Color[3]       = Color[3];
+		Drawable.Color[4]       = Color[4];
         Drawable.Pipeline    = Pipeline;
         Drawable.Material    = Material;
 
@@ -247,19 +251,19 @@ namespace Graphic
         Real32 DestinationY4 = Drawable->Destination.GetBottom();
 
         Buffer->V1.Position.Set(DestinationX1, DestinationY1, Drawable->Depth);
-        Buffer->V1.Color = Drawable->Color;
+        Buffer->V1.Color = Drawable->Color[1];
         Buffer->V1.Texture.Set(Drawable->Source.GetLeft(), Drawable->Source.GetTop());
 
         Buffer->V2.Position.Set(DestinationX2, DestinationY2, Drawable->Depth);
-        Buffer->V2.Color = Drawable->Color;
+        Buffer->V2.Color = Drawable->Color[2];
         Buffer->V2.Texture.Set(Drawable->Source.GetRight(), Drawable->Source.GetTop());
 
         Buffer->V3.Position.Set(DestinationX3, DestinationY3, Drawable->Depth);
-        Buffer->V3.Color = Drawable->Color;
+        Buffer->V3.Color = Drawable->Color[3];
         Buffer->V3.Texture.Set(Drawable->Source.GetLeft(), Drawable->Source.GetBottom());
 
         Buffer->V4.Position.Set(DestinationX4, DestinationY4, Drawable->Depth);
-        Buffer->V4.Color = Drawable->Color;
+        Buffer->V4.Color = Drawable->Color[4];
         Buffer->V4.Texture.Set(Drawable->Source.GetRight(), Drawable->Source.GetBottom());
     }
 

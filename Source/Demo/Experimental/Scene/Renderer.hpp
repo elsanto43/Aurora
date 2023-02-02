@@ -84,7 +84,7 @@ namespace Graphic
             Rectf          Source;
             Real32         Angle;
             Real32         Depth;
-            UInt32         Color;
+            UInt32         Color[4];
             SPtr<Pipeline> Pipeline;
             SPtr<Material> Material;
         };
